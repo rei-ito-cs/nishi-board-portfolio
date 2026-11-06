@@ -1,0 +1,8 @@
+*
+!.gitignore
+!README.md
+!docs/
+!docs/diagrams/
+!docs/diagrams/*.md
+!docs/screenshots/
+!docs/screenshots/*.png
