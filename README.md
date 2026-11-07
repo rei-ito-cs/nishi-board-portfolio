@@ -49,19 +49,13 @@
 
 ```mermaid
 flowchart LR
-  subgraph LAN["信頼する店内ローカルネットワーク"]
-    B["店舗PC・タブレットのブラウザ"]
-    F["HTML / CSS / JavaScript"]
-    S["Node.js / Express<br/>認証・検証・業務API"]
-    D["SQLite<br/>予約・席状態・顧客・履歴"]
-    J["手動のJSON書き出し・復元"]
-    G["自動のgzipバックアップ"]
-    B --> F
-    F <-->|"HTTP・セッション"| S
-    S <-->|"参照・更新"| D
-    S <--> J
-    S --> G
-  end
+  B["店舗PC・タブレットのブラウザ"]
+  S["Node.js / Express<br/>店舗PCで稼働"]
+  D["SQLite<br/>予約・席・顧客・履歴"]
+  G["毎日の自動バックアップ"]
+  B <-->|"HTTP"| S
+  S <-->|"参照・更新"| D
+  S --> G
 ```
 
 店舗PC1台と店内の端末、という運用規模に合わせて、構成要素の少ない作りにしました。
